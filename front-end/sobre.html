@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Cenário Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="./assets/img/logoChrome.png" type="image/png">
+    <link rel="stylesheet" href="./assets/css/sobre.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed sticky-top">
+        <div class="container">
+            <img src="./assets/img/logo.png" class="navbar-img">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/criar-post">Criar Post</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/sobre">Sobre</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge bg-dark border border-secondary text-info mb-3 px-3 py-2 rounded-pill">Desenvolvimento Web</span>
+            <h1 class="display-4 fw-bold text-white mb-3">Sobre o Projeto</h1>
+            <p class="lead text-white-50 mx-auto" style="max-width: 700px;">
+                Uma plataforma moderna de blog desenvolvida para demonstrar proficiência em tecnologias Full-Stack.
+            </p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-lg-7">
+                <div class="glass-panel">
+                    <h3 class="fw-bold text-white mb-4"><i class="bi bi-code-square me-2 text-info"></i>Tech Stack</h3>
+                    <p class="text-white-50 mb-4">
+                        Este projeto foi construído utilizando as melhores práticas do mercado, combinando um Backend robusto com um Frontend responsivo.
+                    </p>
+                    <div class="d-flex flex-wrap">
+                        <div class="tech-badge"><i class="bi bi-filetype-js"></i> Node.js</div>
+                        <div class="tech-badge"><i class="bi bi-database"></i> MySQL</div>
+                        <div class="tech-badge"><i class="bi bi-bootstrap"></i> Bootstrap 5</div>
+                        <div class="tech-badge"><i class="bi bi-server"></i> Express API</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="glass-panel d-flex flex-column justify-content-center text-center">
+                    <i class="bi bi-activity display-1 text-info mb-3"></i>
+                    <h3 class="text-white">Status do Projeto</h3>
+                    <div class="row mt-4 g-3">
+                        <div class="col-6">
+                            <h2 class="fw-bold text-white">100%</h2>
+                            <span class="small text-white-50">Funcional</span>
+                        </div>
+                        <div class="col-6">
+                            <h2 class="fw-bold text-white">v1.0</h2>
+                            <span class="small text-white-50">Versão Atual</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="fw-bold text-white text-center mb-5"><i class="bi bi-people-fill me-2"></i>Quem Criou?</h2>
+        
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="glass-panel text-center">
+                    <div class="profile-img-container">
+                        <img src="https://ui-avatars.com/api/?name=Vitor+Daniel&background=00f2fe&color=000&size=150" alt="Vitor" class="profile-img">
+                    </div>
+                    <h3 class="text-white fw-bold mb-1">Vitor Daniel</h3>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-5">
+                <div class="glass-panel text-center">
+                    <div class="profile-img-container">
+                        <img src="https://ui-avatars.com/api/?name=Lauro+Neto&background=7a28ff&color=fff&size=150" alt="Lauro" class="profile-img" style="border-color: #7a28ff;">
+                    </div>
+                    <h3 class="text-white fw-bold mb-1">Lauro Neto</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-4 text-center">
+        <div class="container">
+            <span class="text-white-50 small">© 2025 TechBlog Pro. <br> Desenvolvido por <strong>Vitor Daniel</strong> & <strong>Lauro Neto</strong>.</span>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

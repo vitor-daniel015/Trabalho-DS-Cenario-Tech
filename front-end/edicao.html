@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Editar Postagem - Cenário Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="./assets/img/logoChrome.png" type="image/png">
+    <link rel="stylesheet" href="./assets/css/edicao.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed shadow-sm">
+        <div class="container">
+            <img src="./assets/img/logo.png" class="navbar-img">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/criar-post">Criar Post</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/sobre">Sobre</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                
+                <div class="card glass-card border-0">
+                    <div class="card-body p-5">
+                        
+                        <div class="text-center mb-5">
+                            <i class="bi bi-pencil-square display-4 text-white mb-3 d-block"></i>
+                            <h2 class="fw-bold">Editar Publicação</h2>
+                            <p class="text-white-50">Atualize as informações do seu conteúdo tech.</p>
+                        </div>
+
+                        <form id="editForm">
+                            
+                            <div class="mb-4">
+                                <label for="titulo" class="form-label"><i class="bi bi-type-h1 me-2"></i>Título da Postagem</label>
+                                <input type="text" id="titulo" class="form-control" placeholder="Ex: O Futuro da IA" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="autor" class="form-label"><i class="bi bi-person-badge me-2"></i>Autor</label>
+                                <input type="text" id="autor" class="form-control" placeholder="Seu nome" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="conteudo" class="form-label"><i class="bi bi-file-text me-2"></i>Conteúdo</label>
+                                <textarea id="conteudo" class="form-control" rows="8" placeholder="Escreva seu artigo aqui..." required></textarea>
+                            </div>
+
+                            <div class="mb-5">
+                                <label for="imagemUrl" class="form-label"><i class="bi bi-card-image me-2"></i>URL da Imagem (Capa)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-transparent border-secondary text-white-50"><i class="bi bi-link-45deg"></i></span>
+                                    <input type="text" id="imagemUrl" class="form-control border-start-0" placeholder="https://...">
+                                </div>
+                                <div class="form-text text-white-50 small mt-2">* Deixe em branco para usar a imagem padrão.</div>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-tech btn-lg">
+                                    <i class="bi bi-check-lg me-2"></i>Salvar Alterações
+                                </button>
+                                <a href="/consulta" class="btn btn-outline-light rounded-pill mt-2">Cancelar</a>
+                            </div>
+                            
+                            <div id="status" class="mt-4 text-center fw-bold"></div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const statusEl = document.getElementById("status");
+        const form = document.getElementById("editForm");
+        let postId = null; 
+        
+        const params = new URLSearchParams(window.location.search);
+        postId = params.get("id");
+
+        if (!postId) {
+            alert("Nenhum ID informado.");
+            window.location.href = "/"; 
+        }
+
+        async function carregarDados() {
+            statusEl.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Carregando dados...';
+            statusEl.className = "mt-4 text-center text-info";
+            
+            try {
+                const res = await fetch(`/api/posts/${postId}`);
+                if (!res.ok) throw new Error("Erro ao buscar dados");
+
+                const post = await res.json();
+                document.getElementById("titulo").value = post.titulo;
+                document.getElementById("autor").value = post.autor;
+                document.getElementById("conteudo").value = post.conteudo;
+                document.getElementById("imagemUrl").value = post.imagemUrl || "";
+                
+                statusEl.textContent = ""; 
+            } catch (err) {
+                statusEl.className = "mt-4 text-center text-danger";
+                statusEl.textContent = "Erro ao carregar dados.";
+                console.error(err);
+            }
+        }
+
+        carregarDados();
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Salvando...';
+
+            const dados = {
+                titulo: document.getElementById("titulo").value,
+                autor: document.getElementById("autor").value,
+                conteudo: document.getElementById("conteudo").value,
+                imagemUrl: document.getElementById("imagemUrl").value
+            };
+
+            try {
+                const res = await fetch(`/api/posts/${postId}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(dados)
+                });
+
+                if (!res.ok) throw new Error("Falha ao atualizar");
+
+                statusEl.className = "mt-4 text-center text-success";
+                statusEl.innerHTML = '<i class="bi bi-check-circle-fill"></i> Sucesso! Redirecionando...';
+                
+                setTimeout(() => window.location.href = "/", 800);
+
+            } catch (err) {
+                console.error(err);
+                statusEl.className = "mt-4 text-center text-danger";
+                statusEl.textContent = "Erro ao salvar alterações.";
+                
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        });
+    </script>
+
+</body>
+</html>

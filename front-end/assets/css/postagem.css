@@ -1,0 +1,99 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --dark-overlay: linear-gradient(to bottom, rgba(18, 18, 30, 0.8), rgba(18, 18, 30, 0.95));
+    --image-hero: url('https://images.pexels.com/photos/3184463/pexels-photo-3184463.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    --neon-blue: #00f2fe;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--dark-overlay), var(--image-hero);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-fixed {
+    background: rgba(18, 18, 30, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.7) !important;
+    transition: 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--neon-blue) !important;
+}
+
+/* Card de Vidro (Glassmorphism) */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* Inputs Estilizados Dark Mode */
+.form-control {
+    background: rgba(18, 18, 30, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 10px;
+}
+
+.form-control:focus {
+    background: rgba(18, 18, 30, 0.8);
+    color: #fff;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.form-label {
+    color: var(--neon-blue);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.form-text {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Botão Tech */
+.btn-tech {
+    background: var(--primary-gradient);
+    border: none;
+    color: #0b0b14;
+    font-weight: 700;
+    padding: 12px;
+    border-radius: 50px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-tech:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.6);
+    color: #000;
+}

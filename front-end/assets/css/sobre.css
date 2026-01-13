@@ -1,0 +1,94 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --dark-overlay: linear-gradient(to bottom, rgba(18, 18, 30, 0.8), rgba(18, 18, 30, 0.95));
+    --image-hero: url('https://images.pexels.com/photos/3184463/pexels-photo-3184463.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    --neon-blue: #00f2fe;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--dark-overlay), var(--image-hero);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-fixed {
+    background: rgba(18, 18, 30, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.navbar-img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.7) !important;
+    transition: 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--neon-blue) !important;
+}
+
+/* Componentes Glass Unificados */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.glass-panel:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.tech-badge {
+    font-family: 'Fira Code', monospace;
+    background: rgba(0, 242, 254, 0.1);
+    color: var(--neon-blue);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 242, 254, 0.2);
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.profile-img-container {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--neon-blue);
+    padding: 3px;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-top: 1px solid var(--glass-border);
+    margin-top: auto;
+}
